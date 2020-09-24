@@ -130,14 +130,14 @@ def parse_words(phrase, preserve_case=False, split_by_space=False):
     """
     if split_by_space:
         if preserve_case:
-            r='.,:;'
+            r='<>.,:;'
             to_replace=[re.escape(i) for i in r]
             replace_with=[' '+i+' ' for i in r]
             #x=x.lower()
             phrase = pd.DataFrame([phrase])[0].replace(to_replace,replace_with,regex=True)[0]
             return phrase.split()
         else:
-            r='.,:;'
+            r='<>.,:;'
             to_replace=[re.escape(i) for i in r]
             replace_with=[' '+i+' ' for i in r]
             #x=x.lower()
@@ -147,7 +147,7 @@ def parse_words(phrase, preserve_case=False, split_by_space=False):
     # (underscore). Compatible with non-latin characters, does not
     # split words at apostrophes
     if preserve_case:
-        r='.,:;'
+        r='<>.,:;'
         to_replace=[re.escape(i) for i in r]
         replace_with=[' '+i+' ' for i in r]
         #x=x.lower()
@@ -155,7 +155,7 @@ def parse_words(phrase, preserve_case=False, split_by_space=False):
         return phrase.split()
         #return re.findall(r"([^\W_]+['’]*[^\W_]*)", phrase)
     else:
-        r='.,:;'
+        r='<>.,:;'
         to_replace=[re.escape(i) for i in r]
         replace_with=[' '+i+' ' for i in r]
         #x=x.lower()
